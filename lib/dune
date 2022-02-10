@@ -1,0 +1,4 @@
+(library
+ (name tmux)
+ (public_name mssh)
+ (libraries core))

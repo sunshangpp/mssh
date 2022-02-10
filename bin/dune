@@ -1,0 +1,6 @@
+(executable
+ (name main)
+ (public_name mssh)
+ (libraries mssh core shell)
+ (preprocess
+  (pps ppx_jane)))
