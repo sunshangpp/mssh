@@ -45,7 +45,7 @@ let command =
       in
       fun () ->
         if not (in_tmux_session ()) then failwith "must be in a tmux session";
-        if List.length hosts >= max_hosts then failwith "too many hosts!";
+        if List.length hosts > max_hosts then failwith "too many hosts!";
         setup_tmux_panes_and_send_ssh_commands hosts ~user ~panes_per_window)
 ;;
 

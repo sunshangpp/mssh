@@ -7,6 +7,10 @@ $(eval $(ARGS):;@:)
 all:
 	opam exec -- dune build --root . @install
 
+.PHONY: cp_binary
+cp_binary: all # copy binary to local bin dir
+	cp _build/default/bin/main.exe ~/bin/mssh
+
 .PHONY: deps
 deps: ## Install development dependencies
 	opam install -y dune-release ocamlformat utop ocaml-lsp-server
@@ -66,7 +70,7 @@ utop: ## Run a REPL and link with the project's libraries
 	opam exec -- dune utop --root . lib -- -implicit-bindings
 
 .PHONY: release
-release: all ## Run the release script 
+release: all ## Run the release script
 	opam exec -- dune-release tag
 	opam exec -- dune-release distrib
 	opam exec -- dune-release publish distrib -y
